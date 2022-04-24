@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 // Components
 import QuestionCard from './components/QuestionCard'
 
+let userAnswers: string[] = [];
+
 const App = () => {
 
   type Question = {
@@ -30,7 +32,6 @@ const App = () => {
 
   const [quizStarted, setQuizStarted] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
 
 
@@ -44,16 +45,22 @@ const App = () => {
     // user answer  
     const answer = e.currentTarget.value;
     
-    setCurrentlySelectedAnswer(answer)
+    setCurrentlySelectedAnswer(answer);
 
-    console.log("answer is " + currentlySelectedAnswer);
+    console.log("answer is " + answer);
   }
 
   const nextQuestion = () => {
-    // setUserAnswers(prev => prev.push(currentlySelectedAnswer))
-    setCurrentlySelectedAnswer("")
-    setQuestionNumber(prev => prev + 1)
+    userAnswers.push(currentlySelectedAnswer);
+    setCurrentlySelectedAnswer("");
+    setQuestionNumber(prev => prev + 1);
   }
+
+  const finishQuiz = () => {
+    nextQuestion();
+    console.log(userAnswers);
+  }
+
 
   return (
     <div className="App">
@@ -66,7 +73,7 @@ const App = () => {
       ) : null}
 
 
-      {quizStarted && questionNumber <= questionList.length ? 
+      {quizStarted && questionNumber < questionList.length ? 
       <QuestionCard 
         questionNumber={questionNumber+1}
         totalQuestions={TOTAL_QUESTIONS}
@@ -77,12 +84,20 @@ const App = () => {
       />
       : null}
 
-      {quizStarted && questionNumber < questionList.length ? currentlySelectedAnswer !== "" && 
-              <Button className="next" onClick={nextQuestion}>
+      {quizStarted && questionNumber+1 < questionList.length && currentlySelectedAnswer !== "" ? 
+            <Button className="next" onClick={nextQuestion}>
               Næste spørgsmål
+            </Button>
+      : quizStarted && questionNumber+1 == questionList.length && currentlySelectedAnswer !== "" ? 
+            <Button className="next" onClick={finishQuiz}>
+            Afslut quiz
             </Button>
       : null}
 
+      {quizStarted && questionNumber == questionList.length ? 
+      <p>quiz slut</p>
+      : null}
+      
     </div>
     
   );
