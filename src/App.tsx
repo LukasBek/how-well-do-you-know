@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 // Components
 import QuestionCard from './components/QuestionCard'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 let userAnswers: string[] = [];
 

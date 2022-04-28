@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 
 type Props = {
     question: string;
