@@ -1,6 +1,13 @@
 .App {
   text-align: center;
+  margin: auto;
+  padding: 10px;
   background-color: blanchedalmond;
+}
+
+.contentbox {
+  width: min(100% - 2rem, 600px);
+  margin-inline: auto;
 }
 
 .App-logo {
