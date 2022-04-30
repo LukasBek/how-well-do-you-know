@@ -3,6 +3,8 @@
   margin: auto;
   padding: 10px;
   background-color: blanchedalmond;
+  width: min(100% - 2rem, 600px);
+  margin-inline: auto;
 }
 
 .contentbox {

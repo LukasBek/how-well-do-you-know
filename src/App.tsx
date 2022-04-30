@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
-import { ArrowRight } from 'react-bootstrap-icons';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
 
 // Components
 import QuestionCard from "./components/QuestionCard";
@@ -57,6 +58,16 @@ const App = () => {
     userAnswers.push(currentlySelectedAnswer);
     setCurrentlySelectedAnswer("");
     setQuestionNumber((prev) => prev + 1);
+    console.log(userAnswers);
+    console.log(questionNumber);
+  };
+
+  const prevQuestion = () => {
+    userAnswers.pop();
+    setCurrentlySelectedAnswer("");
+    setQuestionNumber((prev) => prev - 1);
+    console.log(userAnswers);
+    console.log(questionNumber);
   };
 
   const finishQuiz = () => {
@@ -67,62 +78,77 @@ const App = () => {
   return (
     <Container fluid="sm">
       <div className="App text-center">
-        <div className="contentbox">
-          <Row className="justify-content-md-center">
-            <h1>Konfirmations Quiz</h1>
-          </Row>
-          <Row className="justify-content-md-center">
-            <div className="content">
-              <Col md={4}>
-                {!quizStarted ? (
-                  <Button
-                    variant="success"
-                    className="col-8"
-                    size="lg"
-                    onClick={startQuiz}
-                  >
-                    Tryk for at starte
-                  </Button>
-                ) : null}
-              </Col>
-
-              {quizStarted && questionNumber < questionList.length ? (
-                <QuestionCard
-                  questionNumber={questionNumber + 1}
-                  totalQuestions={TOTAL_QUESTIONS}
-                  question={questionList[questionNumber].question}
-                  answers={questionList[questionNumber].answers}
-                  userAnswer={
-                    currentlySelectedAnswer
-                  }
-                  callback={onAnswerClick}
-                />
+        <Row className="justify-content-md-center">
+          <h1>Konfirmations Quiz</h1>
+        </Row>
+        <Row className="justify-content-md-center">
+          <div className="content">
+            <Col md={4}>
+              {!quizStarted ? (
+                <Button
+                  variant="success"
+                  className="col-8"
+                  size="lg"
+                  onClick={startQuiz}
+                >
+                  Tryk for at starte
+                </Button>
               ) : null}
-            </div>
-          </Row>
-          <Row className="justify-content-md-center">
-            <div className="content">
-              <Col md={4}>
-                {quizStarted &&
-                questionNumber + 1 < questionList.length &&
-                currentlySelectedAnswer !== "" ? (
-                  <Button variant="info" className="col-2" onClick={nextQuestion}>
-                    <ArrowRight size={50}/>
-                  </Button>
-                ) : quizStarted &&
-                  questionNumber + 1 === questionList.length &&
-                  currentlySelectedAnswer !== "" ? (
-                  <Button className="col-6"  onClick={finishQuiz}>
-                    Afslut quiz
-                  </Button>
-                ) : null}
-              </Col>
-            </div>
-          </Row>
-          {quizStarted && questionNumber === questionList.length ? (
-            <p>quiz slut</p>
-          ) : null}
-        </div>
+            </Col>
+
+            {quizStarted && questionNumber < questionList.length ? (
+              <QuestionCard
+                questionNumber={questionNumber + 1}
+                totalQuestions={TOTAL_QUESTIONS}
+                question={questionList[questionNumber].question}
+                answers={questionList[questionNumber].answers}
+                userAnswer={currentlySelectedAnswer}
+                callback={onAnswerClick}
+              />
+            ) : null}
+          </div>
+        </Row>
+        <Row className="justify-content-md-center">
+          <div className="content">
+            <Col md={4}>
+              {quizStarted && currentlySelectedAnswer !== "" ? (
+                <ButtonGroup>
+                  {questionNumber === 0 ? null : (
+                    <Button
+                      variant="info"
+                      className="col-2"
+                      onClick={prevQuestion}
+                      disabled={questionNumber === 0}
+                    >
+                      <ArrowLeft size={50} />
+                    </Button>
+                  )}
+
+                  {questionNumber + 1 < questionList.length ? (
+                    <Button
+                      variant="info"
+                      className="col-2"
+                      onClick={nextQuestion}
+                    >
+                      <ArrowRight size={50} />
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="info"
+                      className="col-2"
+                      onClick={finishQuiz}
+                    >
+                      <b>Afslut</b>
+                    </Button>
+                  )}
+                </ButtonGroup>
+              ) : null}
+            </Col>
+          </div>
+        </Row>
+        {quizStarted && questionNumber === questionList.length ? (
+          <p>quiz slut</p>
+        ) : null}
       </div>
     </Container>
   );
