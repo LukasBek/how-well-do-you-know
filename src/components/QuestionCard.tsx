@@ -31,7 +31,7 @@ const QuestionCard: React.FC<Props> = ({
             <Button
               variant="secondary"
               size="lg"
-              active={userAnswer == answers[0]}
+              active={userAnswer === answers[0]}
               value={answers[0]}
               onClick={callback}
             >
@@ -47,7 +47,7 @@ const QuestionCard: React.FC<Props> = ({
             <Button
               variant="secondary"
               size="lg"
-              active={userAnswer == answers[1]}
+              active={userAnswer === answers[1]}
               value={answers[1]}
               onClick={callback}
             >
@@ -65,7 +65,7 @@ const QuestionCard: React.FC<Props> = ({
             <Button
               variant="secondary"
               size="lg"
-              active={userAnswer == answers[2]}
+              active={userAnswer === answers[2]}
               value={answers[2]}
               onClick={callback}
             >
@@ -81,7 +81,7 @@ const QuestionCard: React.FC<Props> = ({
             <Button
               variant="secondary"
               size="lg"
-              active={userAnswer == answers[3]}
+              active={userAnswer === answers[3]}
               value={answers[3]}
               onClick={callback}
             >
