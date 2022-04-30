@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Button from "react-bootstrap/Button";
+import { ArrowRight } from 'react-bootstrap-icons';
 
 // Components
 import QuestionCard from "./components/QuestionCard";
@@ -75,7 +76,7 @@ const App = () => {
               <Col md={4}>
                 {!quizStarted ? (
                   <Button
-                    variant="primary"
+                    variant="success"
                     className="col-8"
                     size="lg"
                     onClick={startQuiz}
@@ -92,7 +93,7 @@ const App = () => {
                   question={questionList[questionNumber].question}
                   answers={questionList[questionNumber].answers}
                   userAnswer={
-                    userAnswers ? userAnswers[questionNumber] : undefined
+                    currentlySelectedAnswer
                   }
                   callback={onAnswerClick}
                 />
@@ -100,21 +101,23 @@ const App = () => {
             </div>
           </Row>
           <Row className="justify-content-md-center">
-            <Col md={4}>
-              {quizStarted &&
-              questionNumber + 1 < questionList.length &&
-              currentlySelectedAnswer !== "" ? (
-                <Button className="col-6" size="sm" onClick={nextQuestion}>
-                  Næste spørgsmål
-                </Button>
-              ) : quizStarted &&
-                questionNumber + 1 === questionList.length &&
+            <div className="content">
+              <Col md={4}>
+                {quizStarted &&
+                questionNumber + 1 < questionList.length &&
                 currentlySelectedAnswer !== "" ? (
-                <Button className="col-6" size="sm" onClick={finishQuiz}>
-                  Afslut quiz
-                </Button>
-              ) : null}
-            </Col>
+                  <Button variant="info" className="col-2" onClick={nextQuestion}>
+                    <ArrowRight size={50}/>
+                  </Button>
+                ) : quizStarted &&
+                  questionNumber + 1 === questionList.length &&
+                  currentlySelectedAnswer !== "" ? (
+                  <Button className="col-6"  onClick={finishQuiz}>
+                    Afslut quiz
+                  </Button>
+                ) : null}
+              </Col>
+            </div>
           </Row>
           {quizStarted && questionNumber === questionList.length ? (
             <p>quiz slut</p>

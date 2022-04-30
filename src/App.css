@@ -14,6 +14,16 @@
   padding-top: 20px;
 }
 
+.btn-secondary {
+  height: 100px !important;
+}
+
+.btn-info {
+  background-color: blanchedalmond !important;
+  border: white !important;
+  scale: 2;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
