@@ -40,7 +40,6 @@ const App = () => {
   const TOTAL_QUESTIONS = questionList.length;
 
   const [quizStarted, setQuizStarted] = useState(false);
-  const [quizFinished, setQuizFinished] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
 
@@ -77,7 +76,6 @@ const App = () => {
 
   const finishQuiz = () => {
     nextQuestion();
-    setQuizFinished(true);
     console.log(userAnswers);
   };
 
