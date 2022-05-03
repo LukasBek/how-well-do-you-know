@@ -23,6 +23,14 @@
   border-color: rgb(51, 88, 51) !important;
 }
 
+.btn-success {
+  background-color: rgb(51, 88, 51) !important;
+  box-shadow: 5px 5px 5px rgb(0, 43, 0);
+  font-size: medium !important;
+  height: 75px !important;
+  margin-top: 50px;
+}
+
 .topQuestion {
   font-family: 'Quattrocento', serif;
 }
