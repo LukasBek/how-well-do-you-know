@@ -31,11 +31,16 @@ const App = () => {
       question: "Hvilket land vil Julie helst til?",
       answers: ["Frankrig", "Grønland", "Australien", "USA"],
     },
+    {
+      question: "Hvem vil Julie helst til koncert med?",
+      answers: ["Olivia Rodrigo", "Vikingarna", "Kesi", "Elton John"],
+    },
   ];
 
   const TOTAL_QUESTIONS = questionList.length;
 
   const [quizStarted, setQuizStarted] = useState(false);
+  const [quizFinished, setQuizFinished] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
 
@@ -72,6 +77,7 @@ const App = () => {
 
   const finishQuiz = () => {
     nextQuestion();
+    setQuizFinished(true);
     console.log(userAnswers);
   };
 
@@ -150,7 +156,11 @@ const App = () => {
           </div>
         </Row>
         {quizStarted && questionNumber === questionList.length ? (
-          <p>quiz slut</p>
+          <div className="end">
+            <h5>Tak fordi du deltog!</h5>
+            <p>Dine svar var: </p>
+            <p>{userAnswers.map(answer => <p> {answer} </p>)}</p>
+          </div>
         ) : null}
       </div>
     </Container>

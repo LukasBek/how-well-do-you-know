@@ -3,10 +3,6 @@
   background-color: rgb(212, 179, 212);
 }
 
-.h1 {
-  font-family: 'Great Vibes', cursive;;
-}
-
 .contentbox {
   width: min(100% - 2rem, 600px);
   margin-inline: auto;
@@ -21,6 +17,7 @@
   background-color: rgb(51, 88, 51) !important;
   box-shadow: 5px 5px 5px rgb(0, 43, 0);
   border-color: rgb(51, 88, 51) !important;
+  color:rgb(231, 216, 240) !important;
 }
 
 .btn-success {
@@ -28,6 +25,7 @@
   box-shadow: 5px 5px 5px rgb(0, 43, 0);
   font-size: medium !important;
   height: 75px !important;
+  color:rgb(231, 216, 240) !important;
   margin-top: 50px;
 }
 
@@ -47,6 +45,10 @@
   background-color: rgb(212, 179, 212) !important;
   border-color: rgb(212, 179, 212) !important;
   scale: 2;
+}
+
+.end {
+  font-family: 'Merienda', cursive;
 }
 
 .App-logo {
