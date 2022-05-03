@@ -11,7 +11,7 @@ import { Container, Row, Col } from "react-bootstrap";
 let userAnswers: string[] = [];
 
 const App = () => {
-  document.body.style.background = "blanchedalmond";
+  document.body.style.background = "rgb(212, 179, 212)";
 
   type Question = {
     question: string;
@@ -79,7 +79,10 @@ const App = () => {
     <Container fluid="sm">
       <div className="App text-center">
         <Row className="justify-content-md-center">
-          <h1>Konfirmations Quiz</h1>
+          <p></p>
+          {!quizStarted ? (
+            <h1>Hvor godt kender du Julie?</h1>
+          ) : null }
         </Row>
         <Row className="justify-content-md-center">
           <div className="content">

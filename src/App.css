@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-  margin: auto;
-  padding: 10px;
-  background-color: blanchedalmond;
-  width: min(100% - 2rem, 600px);
-  margin-inline: auto;
+  background-color: rgb(212, 179, 212);
+}
+
+.h1 {
+  font-family: 'Great Vibes', cursive;;
 }
 
 .contentbox {
@@ -18,11 +18,26 @@
 
 .btn-secondary {
   height: 100px !important;
+  background-color: rgb(51, 88, 51) !important;
+  box-shadow: 5px 5px 5px rgb(0, 43, 0);
+  border-color: rgb(51, 88, 51) !important;
+}
+
+.topQuestion {
+  font-family: 'Quattrocento', serif;
+}
+
+.btn-secondary::selection {
+  background-color: aqua !important;
+}
+
+.btn-secondary:focus {
+  background-color: rgb(90, 148, 90) !important;
 }
 
 .btn-info {
-  background-color: blanchedalmond !important;
-  border: white !important;
+  background-color: rgb(212, 179, 212) !important;
+  border-color: rgb(212, 179, 212) !important;
   scale: 2;
 }
 

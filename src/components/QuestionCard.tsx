@@ -19,11 +19,13 @@ const QuestionCard: React.FC<Props> = ({
   totalQuestions,
 }) => (
   <div>
+    <div className="topQuestion">
+    <h3><b>{question}</b></h3>
     <h6>
       Spørgsmål: {questionNumber} / {totalQuestions}
     </h6>
-    <p><i>{question}</i></p>
-
+    <p></p>
+    </div>
     <Row className="justify-content-md-center">
       <Col md={4}>
         <div key={answers[0]}>
