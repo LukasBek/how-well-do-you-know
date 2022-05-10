@@ -35,6 +35,7 @@ const QuestionCard: React.FC<Props> = ({
               size="lg"
               active={userAnswer === answers[0]}
               value={answers[0]}
+              name="0"
               onClick={callback}
             >
               {answers[0]}
@@ -51,6 +52,7 @@ const QuestionCard: React.FC<Props> = ({
               size="lg"
               active={userAnswer === answers[1]}
               value={answers[1]}
+              name="1"
               onClick={callback}
             >
               {answers[1]}
@@ -69,6 +71,7 @@ const QuestionCard: React.FC<Props> = ({
               size="lg"
               active={userAnswer === answers[2]}
               value={answers[2]}
+              name="2"
               onClick={callback}
             >
               {answers[2]}
@@ -85,6 +88,7 @@ const QuestionCard: React.FC<Props> = ({
               size="lg"
               active={userAnswer === answers[3]}
               value={answers[3]}
+              name="3"
               onClick={callback}
             >
               {answers[3]}

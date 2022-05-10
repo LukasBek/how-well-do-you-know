@@ -7,8 +7,11 @@ import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
 // Components
 import QuestionCard from "./components/QuestionCard";
 import { Container, Row, Col } from "react-bootstrap";
+import Answer from "./components/Model/Answer";
 
 let userAnswers: string[] = [];
+let userAnswersNumber: number[] = [];
+let userAnswersObject: Answer[] = [];
 
 const App = () => {
   document.body.style.background = "rgb(212, 179, 212)";
@@ -42,11 +45,10 @@ const App = () => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
+  const [currentlySelectedAnswerNumber, setCurrentlySelectedAnswerNumber] = useState(-1);
 
   const startQuiz = () => {
     setQuizStarted(true);
-    console.log("Start pressed");
-    console.log("Questions are: " + questionList);
   };
 
   const onAnswerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -54,29 +56,39 @@ const App = () => {
     const answer = e.currentTarget.value;
 
     setCurrentlySelectedAnswer(answer);
-
-    console.log("answer is " + answer);
+    const button: HTMLButtonElement = e.currentTarget;
+    setCurrentlySelectedAnswerNumber(parseInt(button.name))
   };
 
   const nextQuestion = () => {
     userAnswers.push(currentlySelectedAnswer);
+    userAnswersNumber.push(currentlySelectedAnswerNumber);
+    var answer: Answer;
+    answer = new Answer();
+    answer.questionId = questionNumber;
+    answer.questionAnswer = currentlySelectedAnswerNumber;
+    userAnswersObject.push(answer)
     setCurrentlySelectedAnswer("");
+    setCurrentlySelectedAnswerNumber(-1)
     setQuestionNumber((prev) => prev + 1);
-    console.log(userAnswers);
-    console.log(questionNumber);
   };
 
   const prevQuestion = () => {
     userAnswers.pop();
+    userAnswersNumber.pop();
+    userAnswersObject.pop();
     setCurrentlySelectedAnswer("");
     setQuestionNumber((prev) => prev - 1);
-    console.log(userAnswers);
-    console.log(questionNumber);
+
   };
 
   const finishQuiz = () => {
     nextQuestion();
-    console.log(userAnswers);
+    for(let answer of userAnswersObject) {
+      console.log("questionnr: " + answer.questionId + " and questionanswer: " + answer.questionAnswer);
+    }
+    
+    sendAnswers(userAnswersObject);
   };
 
   return (
@@ -156,13 +168,30 @@ const App = () => {
         {quizStarted && questionNumber === questionList.length ? (
           <div className="end">
             <h5>Tak fordi du deltog!</h5>
-            <p>Dine svar var: </p>
-            <p>{userAnswers.map(answer => <p> {answer} </p>)}</p>
+            Dine svar var: 
+            {userAnswers.map(answer => <p key={answer}> {answer} </p>)}
           </div>
         ) : null}
       </div>
     </Container>
   );
+
+  function sendAnswers(answerList: Answer[]){
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(answerList)
+    };
+
+    fetch('https://konfirmationsapi.azurewebsites.net/api/Answers', requestOptions)
+      .then(response => {
+        if(response.ok) {
+          console.log("woohoo")
+        } else {
+          console.log("something went wrong: " + response.body)
+        }
+      })
+  }
 };
 
 export default App;
