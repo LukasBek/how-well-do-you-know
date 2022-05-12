@@ -47,6 +47,11 @@
   scale: 2;
 }
 
+.btn-light {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
 .end {
   font-family: 'Merienda', cursive;
 }
@@ -54,6 +59,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.adminInput {
+  padding-top: 300px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

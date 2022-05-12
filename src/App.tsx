@@ -12,6 +12,7 @@ import Answer from "./components/Model/Answer";
 let userAnswers: string[] = [];
 let userAnswersNumber: number[] = [];
 let userAnswersObject: Answer[] = [];
+let isJulie: boolean = false;
 
 const App = () => {
   document.body.style.background = "rgb(212, 179, 212)";
@@ -46,6 +47,7 @@ const App = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
   const [currentlySelectedAnswerNumber, setCurrentlySelectedAnswerNumber] = useState(-1);
+  const [value, setValue] = useState("");
 
   const startQuiz = () => {
     setQuizStarted(true);
@@ -91,6 +93,17 @@ const App = () => {
     sendAnswers(userAnswersObject);
   };
 
+
+  function adminInput(text: String) {
+    if("julieerbaresupersej" === text) {
+      isJulie = true;
+      
+    }
+    return undefined;
+  }
+  
+
+
   return (
     <Container fluid="sm">
       <div className="App text-center">
@@ -130,12 +143,23 @@ const App = () => {
         <Row className="justify-content-md-center">
           <div className="content">
             <Col md={4}>
+              {!quizStarted ? (                
+              <div className="adminInput">
+                <input value={value} onChange={(e) => {setValue(e.target.value)}}></input>
+                <Button
+                  variant="light"
+                  className="col-8"
+                  size="sm"
+                  onClick={adminInput(value)}
+                  >
+                </Button>
+              </div>) : null}
               {quizStarted && currentlySelectedAnswer !== "" ? (
                 <ButtonGroup>
                   {questionNumber === 0 ? null : (
                     <Button
                       variant="info"
-                      className="col-2"
+                      className="col-3"
                       onClick={prevQuestion}
                       disabled={questionNumber === 0}
                     >
@@ -182,8 +206,17 @@ const App = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(answerList)
     };
+    let url = ''
+    if(!isJulie) {
+      console.log("sender normalt svar til api");
+      url = 'https://konfirmationsapi.azurewebsites.net/api/Answers';
+    } else {
+      console.log("sender vip svar til api");
+      url = 'https://konfirmationsapi.azurewebsites.net/api/Answers/vipanswer'
+    }
 
-    fetch('https://konfirmationsapi.azurewebsites.net/api/Answers', requestOptions)
+
+    fetch(url, requestOptions)
       .then(response => {
         if(response.ok) {
           console.log("woohoo")
