@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
 
+
 // Components
 import QuestionCard from "./components/QuestionCard";
+import FinishScreen from "./components/FinishScreen";
 import { Container, Row, Col } from "react-bootstrap";
 import Answer from "./components/Model/Answer";
 
@@ -16,6 +18,9 @@ let isJulie: boolean = false;
 
 const App = () => {
   document.body.style.background = "rgb(212, 179, 212)";
+
+
+
 
   type Question = {
     question: string;
@@ -28,16 +33,40 @@ const App = () => {
       answers: ["Hansen", "Petersen", "Lynge", "Andersen"],
     },
     {
-      question: "Hvad vil Julie helst have til aftensmad?",
-      answers: ["Sushi", "Pizza", "Bøf", "Suppe"],
+      question: "Hvilket land vil Julie helst besøge?",
+      answers: ["Kenya", "Grønland", "Australien", "USA"],
     },
     {
-      question: "Hvilket land vil Julie helst til?",
-      answers: ["Frankrig", "Grønland", "Australien", "USA"],
+      question: "Hvis Julie kun måtte spise en ting resten af livet, hvad skulle det så være?",
+      answers: ["Sushi", "Pizza", "Slik", "Leverpostejsmadder"],
+    },
+    {
+      question: "Hvilken superkræft ville Julie helst have",
+      answers: ["At kunne flyve", "Gøre sig usynlig", "Have superstyrke", "Ingen - Julie er allerede super!"],
+    },
+    {
+      question: "Julie er tvunget til at bruge en time i et meget lille rum med en af disse muligheder. Hvilken mulighed vælger Julie?",
+      answers: ["10 fugleedderkopper", "5 slanger", "50 blodsugende igler", "Hendes lærer, der bruger hele timen på at snakke om matematik"],
+    },
+    {
+      question: "Hvis Julie skulle bruge 1000 kr. her og nu, hvad ville hun så bruge det på?",
+      answers: ["Smykker", "Tøj", "Sin kat Ella", "Gaver til sine søskende"],
+    },
+    {
+      question: "Åh nej, Julie er røget i fængsel! Men hvorfor?",
+      answers: ["Hun var for flabet overfor sine forældre", "Hun kørte for hurtigt på sin cykel", "Hun pjækkede fra skolen", "Alle sammen på en gang"],
+    },
+    {
+      question: "Julie håber at nogen hjælper hende med at bryde ud af fængslet, men hvem tror hun mest på ville gøre det?",
+      answers: ["Sin kat Ella", "Hendes søskende", "Hendes mor", "Hendes far"],
     },
     {
       question: "Hvem vil Julie helst til koncert med?",
       answers: ["Olivia Rodrigo", "Vikingarna", "Kesi", "Elton John"],
+    },
+    {
+      question: "Hvilket dance move vil Julie helst demonstrere til sin konfirmation?",
+      answers: ["Moonwalk", "Floss", "Ormen", "Robotten"],
     },
   ];
 
@@ -48,6 +77,15 @@ const App = () => {
   const [currentlySelectedAnswer, setCurrentlySelectedAnswer] = useState("");
   const [currentlySelectedAnswerNumber, setCurrentlySelectedAnswerNumber] = useState(-1);
   const [value, setValue] = useState("");
+  const [quizFinished, setQuizFinished] = useState(localStorage.getItem('finishedquiz') === 'yes');
+
+  if(quizFinished) {
+    userAnswersObject = JSON.parse(localStorage.getItem('answers') || '');  
+    for(let answer of userAnswersObject) {
+      console.log("questionnr: " + answer.questionId + " and questionanswer: " + answer.questionAnswer);
+    }
+  }
+  
 
   const startQuiz = () => {
     setQuizStarted(true);
@@ -86,9 +124,10 @@ const App = () => {
 
   const finishQuiz = () => {
     nextQuestion();
-    for(let answer of userAnswersObject) {
-      console.log("questionnr: " + answer.questionId + " and questionanswer: " + answer.questionAnswer);
-    }
+
+    localStorage.setItem('finishedquiz', 'yes');
+    localStorage.setItem('answers', JSON.stringify(userAnswersObject));
+    setQuizFinished(true);
     
     sendAnswers(userAnswersObject);
   };
@@ -97,20 +136,24 @@ const App = () => {
   function adminInput(text: String) {
     if("julieerbaresupersej" === text) {
       isJulie = true;
-      
     }
     return undefined;
-  }
-  
+  }  
 
 
   return (
     <Container fluid="sm">
-      <div className="App text-center">
+      {!quizFinished ? (
+        <div className="App text-center">
+
         <Row className="justify-content-md-center">
           <p></p>
           {!quizStarted ? (
-            <h1>Hvor godt kender du Julie?</h1>
+            <div>
+              <h1>Hvor godt kender du Julie?</h1>
+              <p className="descriptiontext"> Vi er mange der godt nogengange kan undre os over hvad Julie egentligt går og tænker. Prøv at svare på denne ud fra hvad du tror Julie ville svare. Når julie også har taget den vil vi forhåbentlig blive lidt klogere på hvem hun egentlig er og hvem VI tror hun egentlig er!  </p>
+            </div>
+
           ) : null }
         </Row>
         <Row className="justify-content-md-center">
@@ -154,19 +197,22 @@ const App = () => {
                   >
                 </Button>
               </div>) : null}
+              {isJulie ? (
+                <p>Du er julie!</p>
+              ) : null }
               {quizStarted && currentlySelectedAnswer !== "" ? (
                 <ButtonGroup>
                   {questionNumber === 0 ? null : (
                     <Button
                       variant="info"
-                      className="col-3"
+                      className="col-2"
                       onClick={prevQuestion}
                       disabled={questionNumber === 0}
                     >
                       <ArrowLeft size={50} />
                     </Button>
                   )}
-
+                  
                   {questionNumber + 1 < questionList.length ? (
                     <Button
                       variant="info"
@@ -189,14 +235,11 @@ const App = () => {
             </Col>
           </div>
         </Row>
-        {quizStarted && questionNumber === questionList.length ? (
-          <div className="end">
-            <h5>Tak fordi du deltog!</h5>
-            Dine svar var: 
-            {userAnswers.map(answer => <p key={answer}> {answer} </p>)}
-          </div>
-        ) : null}
       </div>
+      ) :           
+        <FinishScreen answers={userAnswersObject} questionList={questionList}/>
+      }
+
     </Container>
   );
 

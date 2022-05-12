@@ -14,3 +14,10 @@ code {
 h1 {
   font-family: 'Merienda', cursive;
 }
+
+h2 {
+  font-family: 'Merienda', cursive;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+}

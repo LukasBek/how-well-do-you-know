@@ -33,6 +33,36 @@
   font-family: 'Quattrocento', serif;
 }
 
+.questions {
+  font-family: 'Quattrocento', serif;
+  height: fit-content;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  padding-bottom: 10px;
+  flex-shrink: 1;
+  max-width:fit-content;
+  word-wrap:break-word;
+  width:auto;
+  display:inline-block;
+}
+
+.answer {
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.questions2 {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-family: 'Quattrocento', serif;
+}
+
+.descriptiontext{
+  padding-top: 40px;
+  font-family: 'Quattrocento', serif;
+  text-align: left;
+}
+
 .btn-secondary::selection {
   background-color: aqua !important;
 }
@@ -44,7 +74,8 @@
 .btn-info {
   background-color: rgb(212, 179, 212) !important;
   border-color: rgb(212, 179, 212) !important;
-  scale: 2;
+  scale: 1 !important;
+  padding-left: 10px !important;
 }
 
 .btn-light {
@@ -52,8 +83,18 @@
   border-color: transparent !important;
 }
 
+.btn-dark {
+  height: 200px !important;
+}
+
 .end {
   font-family: 'Merienda', cursive;
+}
+
+.paddingleft {
+  padding-left: 40px;
+  margin-left: 40px;
+  border-color: black;
 }
 
 .App-logo {
