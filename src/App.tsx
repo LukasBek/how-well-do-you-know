@@ -105,11 +105,10 @@ const App = () => {
   };
 
   function handleScroll() {
-    window.scroll({
-      top: document.body.offsetHeight,
-      left: 0, 
+    setTimeout(() => {  window.scrollTo({
+      top: document.body.scrollHeight,
       behavior: 'smooth',
-    });
+    }); }, 100);
   }
 
   const nextQuestion = () => {
@@ -212,7 +211,7 @@ const App = () => {
               {isNoah ? (
                 <p>Du er Noah!</p>
               ) : null }
-              {quizStarted && currentlySelectedAnswer !== "" ? (
+              {quizStarted ? (
                 <ButtonGroup>
                   {questionNumber === 0 ? null : (
                     <Button
@@ -225,7 +224,7 @@ const App = () => {
                     </Button>
                   )}
                   
-                  {questionNumber + 1 < questionList.length ? (
+                  {questionNumber + 1 < questionList.length && currentlySelectedAnswer !== "" ? (
                     <Button
                       variant="info"
                       className="col-2"
@@ -233,15 +232,17 @@ const App = () => {
                     >
                       <ArrowRight size={50} />
                     </Button>
-                  ) : (
+                  ) : null}
+                  
+                  {questionNumber + 1 === questionList.length && currentlySelectedAnswer !== "" ? (
                     <Button
-                      variant="info"
-                      className="col-2"
-                      onClick={finishQuiz}
-                    >
-                      <b>Afslut</b>
-                    </Button>
-                  )}
+                    variant="info"
+                    className="col-2"
+                    onClick={finishQuiz}
+                  >
+                    <b>Afslut</b>
+                  </Button>
+                  ) : null}
                 </ButtonGroup>
               ) : null}
             </Col>
