@@ -98,7 +98,19 @@ const App = () => {
     setCurrentlySelectedAnswer(answer);
     const button: HTMLButtonElement = e.currentTarget;
     setCurrentlySelectedAnswerNumber(parseInt(button.name))
+
+    if(true) {
+      handleScroll();
+    }
   };
+
+  function handleScroll() {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0, 
+      behavior: 'smooth',
+    });
+  }
 
   const nextQuestion = () => {
     userAnswers.push(currentlySelectedAnswer);
