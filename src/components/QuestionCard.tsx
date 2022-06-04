@@ -15,7 +15,7 @@ const images = [
   { url: "https://i.ibb.co/k3Lgn8z/6652475421.jpg" },
   { url: "https://i.ibb.co/wM4Z72D/IMG-596611.jpg" },
   { url: "https://i.ibb.co/hmz3wfY/IMG-20220604-212938.jpg" },
-  { url: "https://i.ibb.co/FsFcvsV/IMG-20220604-213553.jpg" },
+  { url: "https://i.ibb.co/CbtdmW1/IMG-20220604-213553.jpg" },
 ];
 
 const QuestionCard: React.FC<Props> = ({
@@ -35,8 +35,8 @@ const QuestionCard: React.FC<Props> = ({
     <p></p>
     </div>
     <Row className="justify-content-md-center">
-      {questionNumber===1 ? (
-              <div>
+      {questionNumber===7 ? (
+              <div style={{display: 'flex', justifyContent: 'center'}}>
                 <SimpleImageSlider
                   width={307}
                   height={407}
@@ -44,11 +44,12 @@ const QuestionCard: React.FC<Props> = ({
                   showBullets={true}
                   showNavs={true}
                 />
-                <p></p>
+                
               </div>
             ) : null}
       <Col md={4}>
         <div key={answers[0]}>
+        <p></p>
           <div className="d-grid gap-2">
             <Button
               variant="secondary"

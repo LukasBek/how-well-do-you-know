@@ -29,10 +29,6 @@ const App = () => {
 
   const questionList: Question[] = [
     {
-      question: "test",
-      answers: ["1","2","3","4"]
-    },
-    {
       question: "Hvad er Noahs efternavn?",
       answers: ["Pava", "Pavarsen", "Pavar", "Pavara"],
     },
@@ -53,20 +49,20 @@ const App = () => {
       answers: ["10 fugleedderkopper", "5 slanger", "50 blodsugende igler", "Hans underviser, der bruger hele timen på at snakke om matematik"],
     },
     {
+      question: "Hvilket billede synes Noah er mest pinligt?",
+      answers: ["Billede 1", "Billede 2", "Billede 3", "Billede 4"]
+    },
+    {
       question: "Hvis Noah skulle bruge 1000 kr. her og nu, hvad ville han så bruge det på?",
-      answers: ["Sko", "Tøj", "Gaver til hans forældre", "Gaver til hans søskende"],
+      answers: ["Sko", "Tøj", "Bling", "Gaver til hans søskende"],
     },
     {
       question: "Åh nej, Noah er røget i fængsel! Men hvorfor?",
-      answers: ["Han var for flabet overfor sine forældre", "Hun kørte for hurtigt på sin cykel", "Hun pjækkede fra skolen", "Alle sammen på en gang"],
+      answers: ["Han var for flabet overfor sine forældre", "Han kørte for hurtigt på sin cykel", "Han pjækkede fra skolen", "Alle sammen på en gang"],
     },
     {
-      question: "Noah håber at nogen hjælper hende med at bryde ud af fængslet, men hvem tror hun mest på ville gøre det?",
-      answers: ["Sin kat Ella", "Hendes søskende", "Hendes mor", "Hendes far"],
-    },
-    {
-      question: "Hvem vil Noah helst til koncert med?",
-      answers: ["Olivia Rodrigo", "Vikingarna", "Kesi", "Elton John"],
+      question: "Noah håber at nogen hjælper ham med at bryde ud af fængslet, men hvem tror han mest på ville gøre det?",
+      answers: ["Hans hund Mavi", "Jasmin", "Lukas", "Hans forældre"],
     },
     {
       question: "Hvilket dance move vil Noah helst demonstrere til sin konfirmation?",
