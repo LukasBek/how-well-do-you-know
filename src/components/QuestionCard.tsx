@@ -12,9 +12,9 @@ type Props = {
 };
 
 const images = [
-  { url: "https://i.ibb.co/j3zbTv0/6652475421.jpg" },
-  { url: "https://i.ibb.co/608tync/IMG-596611.jpg" },
-  { url: "https://i.ibb.co/64hhThd/IMG-20220604-212938.jpg" },
+  { url: "https://i.ibb.co/k3Lgn8z/6652475421.jpg" },
+  { url: "https://i.ibb.co/wM4Z72D/IMG-596611.jpg" },
+  { url: "https://i.ibb.co/hmz3wfY/IMG-20220604-212938.jpg" },
   { url: "https://i.ibb.co/FsFcvsV/IMG-20220604-213553.jpg" },
 ];
 
