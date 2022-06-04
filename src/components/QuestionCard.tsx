@@ -38,8 +38,8 @@ const QuestionCard: React.FC<Props> = ({
       {questionNumber===1 ? (
               <div>
                 <SimpleImageSlider
-                  width={768}
-                  height={1024}
+                  width={460}
+                  height={614}
                   images={images}
                   showBullets={true}
                   showNavs={true}
