@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
-const BotModal = ({ isJulie }: any ) => {
+const BotModal = ({ isNoah }: any ) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => {
-        if(isJulie()) {
+        if(isNoah()) {
             setShow(true);        
         }
         

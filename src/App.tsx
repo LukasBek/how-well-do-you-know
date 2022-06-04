@@ -29,6 +29,10 @@ const App = () => {
 
   const questionList: Question[] = [
     {
+      question: "test",
+      answers: ["1","2","3","4"]
+    },
+    {
       question: "Hvad er Noahs efternavn?",
       answers: ["Pava", "Pavarsen", "Pavar", "Pavara"],
     },
@@ -41,20 +45,20 @@ const App = () => {
       answers: ["Sushi", "Pizza", "Slik", "Leverpostejsmadder"],
     },
     {
-      question: "Hvilken superkræft ville Noah helst have",
+      question: "Hvilken superkræft vil Noah helst have",
       answers: ["At kunne flyve", "Gøre sig usynlig", "Have superstyrke", "Ingen - Noah er allerede super!"],
     },
     {
       question: "Noah er tvunget til at bruge en time i et meget lille rum med en af disse muligheder. Hvilken mulighed vælger Noah?",
-      answers: ["10 fugleedderkopper", "5 slanger", "50 blodsugende igler", "Hendes lærer, der bruger hele timen på at snakke om matematik"],
+      answers: ["10 fugleedderkopper", "5 slanger", "50 blodsugende igler", "Hans underviser, der bruger hele timen på at snakke om matematik"],
     },
     {
-      question: "Hvis Noah skulle bruge 1000 kr. her og nu, hvad ville hun så bruge det på?",
-      answers: ["Smykker", "Tøj", "Sin kat Ella", "Gaver til sine søskende"],
+      question: "Hvis Noah skulle bruge 1000 kr. her og nu, hvad ville han så bruge det på?",
+      answers: ["Sko", "Tøj", "Gaver til hans forældre", "Gaver til hans søskende"],
     },
     {
       question: "Åh nej, Noah er røget i fængsel! Men hvorfor?",
-      answers: ["Hun var for flabet overfor sine forældre", "Hun kørte for hurtigt på sin cykel", "Hun pjækkede fra skolen", "Alle sammen på en gang"],
+      answers: ["Han var for flabet overfor sine forældre", "Hun kørte for hurtigt på sin cykel", "Hun pjækkede fra skolen", "Alle sammen på en gang"],
     },
     {
       question: "Noah håber at nogen hjælper hende med at bryde ud af fængslet, men hvem tror hun mest på ville gøre det?",
@@ -66,7 +70,7 @@ const App = () => {
     },
     {
       question: "Hvilket dance move vil Noah helst demonstrere til sin konfirmation?",
-      answers: ["Moonwalk", "Floss", "Ormen", "Robotten"],
+      answers: ["Moonwalk", "Freestyle", "Ormen", "Robotten"],
     },
   ];
 

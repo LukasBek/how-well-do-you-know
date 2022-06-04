@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
+import SimpleImageSlider from "react-simple-image-slider";
 
 type Props = {
   question: string;
@@ -9,6 +10,13 @@ type Props = {
   questionNumber: number;
   totalQuestions: number;
 };
+
+const images = [
+  { url: "https://i.ibb.co/j3zbTv0/6652475421.jpg" },
+  { url: "https://i.ibb.co/608tync/IMG-596611.jpg" },
+  { url: "https://i.ibb.co/64hhThd/IMG-20220604-212938.jpg" },
+  { url: "https://i.ibb.co/FsFcvsV/IMG-20220604-213553.jpg" },
+];
 
 const QuestionCard: React.FC<Props> = ({
   question,
@@ -27,6 +35,18 @@ const QuestionCard: React.FC<Props> = ({
     <p></p>
     </div>
     <Row className="justify-content-md-center">
+      {questionNumber==1 ? (
+              <div>
+                <SimpleImageSlider
+                  width={768}
+                  height={1024}
+                  images={images}
+                  showBullets={true}
+                  showNavs={true}
+                />
+                <p></p>
+              </div>
+            ) : null}
       <Col md={4}>
         <div key={answers[0]}>
           <div className="d-grid gap-2">
