@@ -35,7 +35,7 @@ const QuestionCard: React.FC<Props> = ({
     <p></p>
     </div>
     <Row className="justify-content-md-center">
-      {questionNumber==1 ? (
+      {questionNumber===1 ? (
               <div>
                 <SimpleImageSlider
                   width={768}
