@@ -14,10 +14,10 @@ import Answer from "./components/Model/Answer";
 let userAnswers: string[] = [];
 let userAnswersNumber: number[] = [];
 let userAnswersObject: Answer[] = [];
-let isJulie: boolean = false;
+let isNoah: boolean = false;
 
 const App = () => {
-  document.body.style.background = "rgb(212, 179, 212)";
+  document.body.style.background = "rgb(186, 154, 103)";
 
 
 
@@ -29,43 +29,43 @@ const App = () => {
 
   const questionList: Question[] = [
     {
-      question: "Hvad er Julies efternavn?",
-      answers: ["Hansen", "Petersen", "Lynge", "Andersen"],
+      question: "Hvad er Noahs efternavn?",
+      answers: ["Pava", "Pavarsen", "Pavar", "Pavara"],
     },
     {
-      question: "Hvilket land vil Julie helst besøge?",
+      question: "Hvilket land vil Noah helst besøge?",
       answers: ["Kenya", "Grønland", "Australien", "USA"],
     },
     {
-      question: "Hvis Julie kun måtte spise en ting resten af livet, hvad skulle det så være?",
+      question: "Hvis Noah kun måtte spise en ting resten af livet, hvad skulle det så være?",
       answers: ["Sushi", "Pizza", "Slik", "Leverpostejsmadder"],
     },
     {
-      question: "Hvilken superkræft ville Julie helst have",
-      answers: ["At kunne flyve", "Gøre sig usynlig", "Have superstyrke", "Ingen - Julie er allerede super!"],
+      question: "Hvilken superkræft ville Noah helst have",
+      answers: ["At kunne flyve", "Gøre sig usynlig", "Have superstyrke", "Ingen - Noah er allerede super!"],
     },
     {
-      question: "Julie er tvunget til at bruge en time i et meget lille rum med en af disse muligheder. Hvilken mulighed vælger Julie?",
+      question: "Noah er tvunget til at bruge en time i et meget lille rum med en af disse muligheder. Hvilken mulighed vælger Noah?",
       answers: ["10 fugleedderkopper", "5 slanger", "50 blodsugende igler", "Hendes lærer, der bruger hele timen på at snakke om matematik"],
     },
     {
-      question: "Hvis Julie skulle bruge 1000 kr. her og nu, hvad ville hun så bruge det på?",
+      question: "Hvis Noah skulle bruge 1000 kr. her og nu, hvad ville hun så bruge det på?",
       answers: ["Smykker", "Tøj", "Sin kat Ella", "Gaver til sine søskende"],
     },
     {
-      question: "Åh nej, Julie er røget i fængsel! Men hvorfor?",
+      question: "Åh nej, Noah er røget i fængsel! Men hvorfor?",
       answers: ["Hun var for flabet overfor sine forældre", "Hun kørte for hurtigt på sin cykel", "Hun pjækkede fra skolen", "Alle sammen på en gang"],
     },
     {
-      question: "Julie håber at nogen hjælper hende med at bryde ud af fængslet, men hvem tror hun mest på ville gøre det?",
+      question: "Noah håber at nogen hjælper hende med at bryde ud af fængslet, men hvem tror hun mest på ville gøre det?",
       answers: ["Sin kat Ella", "Hendes søskende", "Hendes mor", "Hendes far"],
     },
     {
-      question: "Hvem vil Julie helst til koncert med?",
+      question: "Hvem vil Noah helst til koncert med?",
       answers: ["Olivia Rodrigo", "Vikingarna", "Kesi", "Elton John"],
     },
     {
-      question: "Hvilket dance move vil Julie helst demonstrere til sin konfirmation?",
+      question: "Hvilket dance move vil Noah helst demonstrere til sin konfirmation?",
       answers: ["Moonwalk", "Floss", "Ormen", "Robotten"],
     },
   ];
@@ -134,8 +134,8 @@ const App = () => {
 
 
   function adminInput(text: String) {
-    if("julieerbaresupersej" === text) {
-      isJulie = true;
+    if("noaherbaresupersej" === text) {
+      isNoah = true;
     }
     return undefined;
   }  
@@ -149,9 +149,9 @@ const App = () => {
         <Row className="justify-content-md-center">
           <p></p>
           {!quizStarted ? (
-            <div>
-              <h1>Hvor godt kender du Julie?</h1>
-              <p className="descriptiontext"> Vi er mange der godt nogengange kan undre os over hvad Julie egentligt går og tænker. Prøv at svare på denne ud fra hvad du tror Julie ville svare. Når julie også har taget den vil vi forhåbentlig blive lidt klogere på hvem hun egentlig er og hvem VI tror hun egentlig er!  </p>
+            <div className="textcolor">
+              <h1>Hvor godt kender du Noah?</h1>
+              <p className="descriptiontext"> Vi er mange der godt nogengange kan undre os over hvad Noah egentligt går og tænker. Prøv at svare på denne ud fra hvad du tror Noah ville svare. Når Noah også har taget den vil vi forhåbentlig blive lidt klogere på hvem hun egentlig er og hvem VI tror hun egentlig er!  </p>
             </div>
 
           ) : null }
@@ -197,8 +197,8 @@ const App = () => {
                   >
                 </Button>
               </div>) : null}
-              {isJulie ? (
-                <p>Du er julie!</p>
+              {isNoah ? (
+                <p>Du er Noah!</p>
               ) : null }
               {quizStarted && currentlySelectedAnswer !== "" ? (
                 <ButtonGroup>
@@ -250,7 +250,7 @@ const App = () => {
       body: JSON.stringify(answerList)
     };
     let url = ''
-    if(!isJulie) {
+    if(!isNoah) {
       console.log("sender normalt svar til api");
       url = 'https://konfirmationsapi.azurewebsites.net/api/Answers';
     } else {

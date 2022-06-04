@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: rgb(212, 179, 212);
 }
 
 .contentbox {
@@ -14,19 +13,43 @@
 
 .btn-secondary {
   height: 100px !important;
-  background-color: rgb(51, 88, 51) !important;
-  box-shadow: 5px 5px 5px rgb(0, 43, 0);
-  border-color: rgb(51, 88, 51) !important;
-  color:rgb(231, 216, 240) !important;
+  background-color: #6793ba !important;
+  box-shadow: 3px 3px 3px #313436 !important;
+  border-color: #3970a1 !important;
+  color:rgb(0, 0, 0) !important;
 }
 
 .btn-success {
   background-color: rgb(51, 88, 51) !important;
   box-shadow: 5px 5px 5px rgb(0, 43, 0);
+  border-color: rgb(46, 77, 46) !important;
   font-size: medium !important;
   height: 75px !important;
-  color:rgb(231, 216, 240) !important;
   margin-top: 50px;
+}
+
+.btn-secondary::selection {
+  background-color: aqua !important;
+}
+
+.btn-secondary:focus {
+  background-color: #3970a1 !important;
+}
+
+.btn-info {
+  background-color: rgb(186, 154, 103) !important;
+  border-color: rgb(186, 154, 103) !important;
+  scale: 1 !important;
+  padding-left: 10px !important;
+}
+
+.btn-light {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.btn-dark {
+  height: 200px !important;
 }
 
 .topQuestion {
@@ -57,34 +80,14 @@
   font-family: 'Quattrocento', serif;
 }
 
+.textcolor{
+  color:black !important;
+}
+
 .descriptiontext{
   padding-top: 40px;
   font-family: 'Quattrocento', serif;
   text-align: left;
-}
-
-.btn-secondary::selection {
-  background-color: aqua !important;
-}
-
-.btn-secondary:focus {
-  background-color: rgb(90, 148, 90) !important;
-}
-
-.btn-info {
-  background-color: rgb(212, 179, 212) !important;
-  border-color: rgb(212, 179, 212) !important;
-  scale: 1 !important;
-  padding-left: 10px !important;
-}
-
-.btn-light {
-  background-color: transparent !important;
-  border-color: transparent !important;
-}
-
-.btn-dark {
-  height: 200px !important;
 }
 
 .end {
