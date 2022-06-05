@@ -58,11 +58,11 @@ const App = () => {
     },
     {
       question: "Åh nej, Noah er røget i fængsel! Men hvorfor?",
-      answers: ["Han var for flabet overfor sine forældre", "Han kørte for hurtigt på sin cykel", "Han pjækkede fra skolen", "Alle sammen på en gang"],
+      answers: ["Han var for flabet overfor sine forældre", "Skatede på togskinnerne", "Han pjækkede fra skolen", "Alle sammen på en gang"],
     },
     {
       question: "Noah håber at nogen hjælper ham med at bryde ud af fængslet, men hvem tror han mest på ville gøre det?",
-      answers: ["Hans hund Mavi", "Jasmin", "Lukas", "Hans forældre"],
+      answers: ["Hans hund Mavi", "Storesøster Jasmin", "Storebror Lukas", "Hans forældre"],
     },
     {
       question: "Hvilket dance move vil Noah helst demonstrere til sin konfirmation?",
@@ -145,7 +145,7 @@ const App = () => {
 
 
   function adminInput(text: String) {
-    if("noaherbaresupersej" === text) {
+    if("noahersupersej" === text) {
       isNoah = true;
     }
     return undefined;
@@ -162,7 +162,8 @@ const App = () => {
           {!quizStarted ? (
             <div className="textcolor">
               <h1>Hvor godt kender du Noah?</h1>
-              <p className="descriptiontext"> Vi er mange der godt nogengange kan undre os over hvad Noah egentligt går og tænker. Prøv at svare på denne ud fra hvad du tror Noah ville svare. Når Noah også har taget den vil vi forhåbentlig blive lidt klogere på hvem hun egentlig er og hvem VI tror hun egentlig er!  </p>
+              <p className="descriptiontext"> Undrer du dig også nogen gange over hvem Noah egentligt er? Disse spørgsmål kommer til at gå ham til livet, så vi forhåbentligt lærer vi ham bedre at kende! <br>
+              </br> Tag quizzen og se om du faktisk kender Noah - det kan potentielt betyde $$$ for Noah. </p>
             </div>
 
           ) : null }
